@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<script src="script.js"></script>
-<link rel="stylesheet" href="style.css">
-<title>Floppy Computer</title>
-</head>
-<body onload="startGame()">
-    <p>Welcome to Floppy Computer, a Flappy Bird clone<br>Yes, I did do basically the same idea last year, but that's only because my other idea was too hard for me to code.</p>
-</body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Floppy Computer</title>
+    </head>
+    <body onload="startGame()">
+        
+        <div style="display:none;">
+            <img id="player" width="480" height="720" src="images/player.png">
+            <img id="pipe" width="55" height="363" src="images/pipe.png">
+       
+        </div>
+
+        <audio id="audioPoint">
+            <source src="audio/point.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <audio id="audioDeath">
+            <source src="audio/death.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <p>Welcome to Floppy Computer, a Flappy Bird clone.<br>There is a high score system that saves your high score! There is not a leaderboard though.<br>UPARROW = flap<br>DOWNARROW = pause</p>
+    </body>
 </html>
