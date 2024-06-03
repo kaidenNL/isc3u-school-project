@@ -1,6 +1,6 @@
 /*
  * K Noel-Laughlin
- * May 31, 2024
+ * May 31, 2024 (Modified: June 3, 2024)
  * My JS challenge was to make Flappy Bird, or in this case, Floppy Computer. It has audio, images, animation?, custom fonts and score saving.
  * Audio from Microsoft - Font from Google (CodeMan38)
  */
@@ -227,14 +227,12 @@ function updateGameArea() {
 
 
     if (pt.x < -25) {
-        if(s <= 200){
-            s += 1;
-        }
+        s += 1;
         pointAudio.pause();
         pointAudio.currentTime = 0;
         pointAudio.play();
         myGameArea.resetPipes();
-        if (s % incamt == 0) {
+        if (s % incamt == 0 && s <= 200) {
             ps += inc;
         }
     }
