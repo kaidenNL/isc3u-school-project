@@ -54,14 +54,14 @@ function startGame() {
     s = 0;
     fa = 50;
     px = 980;
-    inc = 2;
-    incamt = 10;
+    inc = 1;
+    incamt = 5;
     ps = 5;
     myGameArea.start();
     ply = new componentImage(30, 30, playerImg, 10, 240);
      
-    pt = new componentImage(40, 500, pipeImg, px, Math.floor(Math.random() * 200) - 450);
-    pb = new componentImage(40, 500, pipeImg, px, Math.floor(Math.random() * 50) + 450);
+    pt = new componentImage(40, 500, pipeImg, px, Math.floor(Math.random() * 150) - 340);
+    pb = new componentImage(40, 500, pipeImg, px, Math.floor(Math.random() * 75) + 350);
 }
 
 var myGameArea = {
@@ -81,20 +81,23 @@ var myGameArea = {
         this.interval = setInterval(updateGameArea, 20);
     },
     killPlayer: function () {
+        // Checks to see if the score from the round is over the saved high score, if so it will set the high score to the score.
         if (s > localStorage.getItem('fcHighScore')) {
             localStorage.setItem('fcHighScore', s);
             hs = localStorage.getItem('fcHighScore');
         }
 
+        // Restarts the death audio before playing it.
         deathAudio.pause();
         deathAudio.currentTime = 0;
         deathAudio.play();
 
+        // Resets everything, from the player's position, to the pipes area.
         ply.y = 240;
         pb.x = px;
         pt.x = px;
-        pt.y = Math.floor(Math.random() * 200) - 400;
-        pb.y = Math.floor(Math.random() * 50) + 400;
+        pt.y = Math.floor(Math.random() * 150) - 340;
+        pb.y = Math.floor(Math.random() * 75) + 350;
         ps = 5;
 
 
@@ -103,8 +106,8 @@ var myGameArea = {
     resetPipes: function () {
         pb.x = px;
         pt.x = px;
-        pt.y = Math.floor(Math.random() * 200) - 400;
-        pb.y = Math.floor(Math.random() * 50) + 400;
+        pt.y = Math.floor(Math.random() * 150) - 340;
+        pb.y = Math.floor(Math.random() * 75) + 350;
     },
     flap: function () {
         ply.y -= fa;
@@ -224,7 +227,9 @@ function updateGameArea() {
 
 
     if (pt.x < -25) {
-        s += 1;
+        if(s <= 200){
+            s += 1;
+        }
         pointAudio.pause();
         pointAudio.currentTime = 0;
         pointAudio.play();
